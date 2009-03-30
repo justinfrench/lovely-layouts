@@ -4,14 +4,18 @@ Here's a bunch of helpers I find myself needing every time I start up a new Rail
 
 h2. In your view
 
- <!-- app/views/posts/show.html.erb -->
+Eg: app/views/posts/show.html.erb
+
+<pre>
  <% title @post.title %>
  <% description @post.description %>
  <% keywords @post.tags.join(", ") %>
  <% copyright @post.user.full_name %>
- 
+</pre>
+
 h2. In your layout
 
+<pre>
   <html>
     <head>
       <%= title_tag "optional default title here" %>
@@ -25,32 +29,40 @@ h2. In your layout
       ...
     </body>
   </html>
+</pre>
   
 h2. And a neat trick for the @<body>@ tag
 
 A block helper for creating body tags is also in there.  The @id@ is generated from @params[:controller]@ (eg "posts"), and the @class@ is generated from @params[:controller]@ name and @params[:action]@ (eg "posts show").
 
+<pre>
   <% body do %>
     ...
   <% end %>
-  
+</pre>
+
 Which pushes out something like this:
 
+<pre>
   <body id="posts" class="posts show">
     ...
   </body>
+</pre>
   
 You can set the @id@ and @class@ from your views:
 
+<pre>
   <% body_id "blog" %>
   <% body_class "whatever" %>
+</pre>
 
 You can override the @id@ and @class@ (or any attribute of the @<body>@ tag) too:
-  
+
+<pre>  
   <% body :id => "blog", :class => "whatever", :onload => "party()" do %>
     ...
   <% end %>
-
+</pre>
 
 h2. There's always a TODO List
 
