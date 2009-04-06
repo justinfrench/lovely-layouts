@@ -17,7 +17,8 @@ module LovelyLayouts
     end
 
     def description_tag(default='')
-      tag(:meta, :name => "description", :content => @content_for_description || default)
+      content = @content_for_description || default
+      tag(:meta, :name => "description", :content => content) unless content.blank?
     end
 
 
@@ -26,7 +27,8 @@ module LovelyLayouts
     end
 
     def keywords_tag(default='')
-      tag(:meta, :name => "keywords", :content => @content_for_keywords || default)
+      content = @content_for_keywords || default
+      tag(:meta, :name => "keywords", :content => content) unless content.blank?
     end
     
 
@@ -35,7 +37,8 @@ module LovelyLayouts
     end
 
     def copyright_tag(default='')
-      tag(:meta, :name => "copyright", :content => @content_for_copyright || default)
+      content = @content_for_copyright || default
+      tag(:meta, :name => "copyright", :content => content) unless content.blank?
     end
 
 
