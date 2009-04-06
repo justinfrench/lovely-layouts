@@ -17,7 +17,7 @@ module LovelyLayouts
     end
 
     def description_tag(default='')
-      tag(:meta, :name => "description", :content => @content_for_description)
+      tag(:meta, :name => "description", :content => @content_for_description || default)
     end
 
 
