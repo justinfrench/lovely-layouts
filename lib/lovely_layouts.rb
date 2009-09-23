@@ -1,16 +1,16 @@
 module LovelyLayouts
-  
+
   module ContentHelpers
-    
+
 
     def title(string)
       content_for(:title, string)
     end
-    
-    def title_tag(default='')
-      content_tag(:title, @content_for_title || default)
+
+    def title_tag(default='',args={})
+      content_tag(:title, "#{args[:prefix]}#{@content_for_title||default}#{args[:suffix]}")
     end
-    
+
 
     def description(string)
       content_for(:description, string)
@@ -30,7 +30,7 @@ module LovelyLayouts
       content = @content_for_keywords || default
       tag(:meta, :name => "keywords", :content => content) unless content.blank?
     end
-    
+
 
     def copyright(string)
       content_for(:copyright, string)
@@ -49,30 +49,31 @@ module LovelyLayouts
     def body_class(string)
       content_for(:body_class, string)
     end
-    
-    
+
+
     def body(*args, &block)
       options = args.extract_options!
       options[:class] ||= @content_for_body_class || default_body_class
       options[:id] ||= @content_for_body_id || default_body_id
-      
+
       contents = capture(&block)
-      
+
       concat(content_tag(:body, contents, options))
     end
-    
-    
+
+
     protected
-    
+
     def default_body_id
       params[:controller]
     end
-    
+
     def default_body_class
       [params[:controller], params[:action]].join(" ")
     end
-    
-    
+
+
   end
 
 end
+
