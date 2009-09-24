@@ -18,7 +18,7 @@ h2. In your layout
 <pre>
   <html>
     <head>
-      <%= title_tag "optional default title here" %>
+      <%= title_tag "optional default title here", :prefix => "optional prefix text", :suffix => "optional suffix text" %>
       <%= description_tag "optional default meta description here" %>
       <%= keywords_tag "optional default meta keywords here" %>
       <%= copyright_tag "optional default meta copyright notice here" %>
@@ -30,7 +30,7 @@ h2. In your layout
     </body>
   </html>
 </pre>
-  
+
 h2. And a neat trick for the @<body>@ tag
 
 A block helper for creating body tags is also in there.  The @id@ is generated from @params[:controller]@ (eg "posts"), and the @class@ is generated from @params[:controller]@ name and @params[:action]@ (eg "posts show").
@@ -48,7 +48,7 @@ Which pushes out something like this:
     ...
   </body>
 </pre>
-  
+
 You can set the @id@ and @class@ from your views:
 
 <pre>
@@ -58,7 +58,7 @@ You can set the @id@ and @class@ from your views:
 
 You can override the @id@ and @class@ (or any attribute of the @<body>@ tag) too:
 
-<pre>  
+<pre>
   <% body :id => "blog", :class => "whatever", :onload => "party()" do %>
     ...
   <% end %>
@@ -67,10 +67,10 @@ You can override the @id@ and @class@ (or any attribute of the @<body>@ tag) too
 h2. There's always a TODO List
 
 * might write some tests!
-* really should offer the usual prefix/suffix stuff that I tend to need in @<title>@ tag
 * probably try to distill the way I do tabs too
-  
-  
+
+
 h2. Blah blah blah blah
 
 Copyright (c) 2009 "Justin French":http://www.justinfrench.com/, released under the MIT license.
+

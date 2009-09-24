@@ -7,10 +7,10 @@ module LovelyLayouts
       content_for(:title, string)
     end
 
-    def title_tag(default='',args={})
-      content_tag(:title, "#{args[:prefix]}#{@content_for_title||default}#{args[:suffix]}")
+    def title_tag(*args)
+      options = args.extract_options!
+      content_tag(:title, "#{options[:prefix]}#{(@content_for_title||args.first)}#{options[:suffix]}")
     end
-
 
     def description(string)
       content_for(:description, string)
