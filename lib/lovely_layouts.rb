@@ -65,11 +65,11 @@ module LovelyLayouts
     protected
 
     def default_body_id
-      params[:controller]
+      params[:controller].gsub('/','_')
     end
 
     def default_body_class
-      [params[:controller], params[:action]].join(" ")
+      [params[:controller], params[:action]].join(" ").gsub('/','_')
     end
 
 
